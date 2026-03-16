@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Team Dhruvishaya — RSCOE Aerospace</title>
+    <meta name="theme-color" content="#000000">
+
+    <!-- Performance: preload key assets -->
+    <link rel="preload" as="video" href="assets/rocket-landing-production.mp4" type="video/mp4">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- Custom Cursor -->
+  <div class="custom-cursor" id="custom-cursor">
+    <svg viewBox="0 0 24 24" width="20" height="20" xmlns="http://www.w3.org/2000/svg">
+      <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z" />
+    </svg>
+  </div>
+
+  <!-- Progress Bar -->
+  <div class="progress-bar" id="pbar"></div>
+
+  <div class="hero-bg">
+    <video class="bg-video" autoplay loop muted playsinline preload="auto">
+      <!-- Local rocket video for homepage -->
+      <source src="rocket.mp4" type="video/mp4">
+      Your browser does not support HTML video.
+    </video>
+    <div class="hero-overlay"></div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <div class="nav-inner">
+      <div class="nav-left">
+        RSCOE · PUNE · INDIA · EST. 2025
+      </div>
+      <ul class="nav-links">
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#team">Team</a></li>
+        <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#contact">Join Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Removed Decor Galaxies -->
+
+  <main>
+
+    <!-- ═══════════════════ HERO ═══════════════════ -->
+    <section id="hero">
+      <div class="hero-content">
+        <h1 class="hero-title">TEAM DHRUVISHAYA</h1>
+        <p class="hero-tagline">Engineering the Future of Aerospace & Rocketry</p>
+
+        <div class="hero-specs">
+          <div class="spec-item">
+            <span class="spec-label">Vehicle</span>
+            <span class="spec-value">AGNI-I Mk II</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Target Apogee</span>
+            <span class="spec-value">10,000 ft</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Propulsion</span>
+            <span class="spec-value">Solid Motor</span>
+          </div>
+          <div class="spec-item">
+            <span class="spec-label">Status</span>
+            <span class="spec-value">In Development</span>
+          </div>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <div class="stat-top">
+              <span class="stat-num" data-count="32">32</span>
+            </div>
+            <span class="stat-label">ENGINEERS</span>
+          </div>
+          <div class="stat">
+            <div class="stat-top">
+              <span class="stat-num" data-count="4">4</span>
+            </div>
+            <span class="stat-label">LIVE PROJECTS</span>
+          </div>
+          <div class="stat">
+            <div class="stat-top">
+              <span class="stat-num" data-count="3">3</span>
+            </div>
+            <span class="stat-label">LAUNCHES</span>
+          </div>
+          <div class="stat">
+            <div class="stat-top">
+              <span class="stat-num" data-count="2022">2022</span>
+            </div>
+            <span class="stat-label">FOUNDED</span>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="hero-cta-wrapper">
+        <div class="hero-cta">
+          <a href="#contact" class="btn-solid">JOIN THE MISSION <svg width="16" height="16" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <polyline points="5 15 12 8 19 15"></polyline>
+            </svg></a>
+          <a href="#projects" class="btn-outline">OUR ROCKETS <svg width="18" height="18" viewBox="0 0 24 24"
+              fill="none" stroke="currentColor" stroke-width="2">
+              <path
+                d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2l.5 2c1.4-1.5 1.5-3 1.5-3l2.5 1 5-7-7-7-7 5 1 2.5s-1.5.1-3 1.5l2 .5z">
+              </path>
+            </svg></a>
+        </div>
+      </div>
+      </div> <!-- /hero-content -->
+
+      <!-- Background absolute scroll text anchored to left of screen -->
+      <div class="bg-scroll-hint">SCROLL TO EXPLORE <span class="line"></span></div>
+      <!-- Floor decor corner star -->
+      <div class="corner-star">
+        <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+          <path d="M12 0 L13.5 10.5 L24 12 L13.5 13.5 L12 24 L10.5 13.5 L0 12 L10.5 10.5 Z" />
+        </svg>
+      </div>
+
+      <!-- Scroll arrow -->
+      <div class="hero-down-arrow">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+          <polyline points="6 9 12 15 18 9"></polyline>
+        </svg>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════ MISSION & VISION ═══════════════════ -->
+    <section id="mission" class="section-pad">
+      <div class="section-inner">
+        <div class="section-label">01 / Mission &amp; Vision</div>
+        <h2 class="section-title">Guided By<br>Purpose</h2>
+        <div class="mission-grid">
+
+          <div class="mission-card" data-reveal>
+            <div class="corner-mark"></div>
+            <div class="card-type">Our Mission</div>
+            <h3 class="card-title">Hands-On Aerospace Engineering</h3>
+            <p class="card-text">To provide RSCOE students with hands-on aerospace engineering experience through
+              structured projects, rigorous safety practices, and sustainable learning methodologies. We convert
+              theoretical knowledge into practical skills that prepare students for careers in aerospace, defense, and
+              advanced technology sectors.</p>
+          </div>
+
+          <div class="mission-card" data-reveal>
+            <div class="corner-mark"></div>
+            <div class="card-type">Our Vision</div>
+            <h3 class="card-title">Nationally Recognized Excellence</h3>
+            <p class="card-text">To establish Team Dhruvishaya as a nationally recognized student aerospace research
+              organization, comparable to programs at IIT Bombay, MIT, and Cornell. We aim to produce graduates who have
+              designed, built, tested, and launched aerospace vehicles — engineers who don't just know the theory, but
+              have lived it.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════ PROJECTS ═══════════════════ -->
+    <section id="projects" class="section-pad">
+      <div class="section-inner">
+        <div class="section-label">02 / Projects &amp; Rockets</div>
+        <h2 class="section-title">Engineering<br>the Future</h2>
+        <div class="projects-grid">
+
+          <div class="project-card" data-reveal>
+            <div class="project-bg">
+              <img src="rocket_engine_1773673185142.png" alt="Agni-I Rocket">
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <div class="project-name">AGNI-I</div>
+                <div class="project-status status-active">ACTIVE</div>
+              </div>
+              <p class="project-desc">Single-stage solid propellant sounding rocket. Our flagship learning vehicle —
+                designed, built, and launched by the core team. Verified structural integrity under Mach 0.6 conditions.
+              </p>
+              <div class="project-specs">
+                <div class="spec"><span class="spec-key">PROPELLANT</span><span class="spec-val">KNSB Solid</span></div>
+                <div class="spec"><span class="spec-key">APOGEE</span><span class="spec-val">620 m</span></div>
+                <div class="spec"><span class="spec-key">DIAMETER</span><span class="spec-val">76 mm</span></div>
+                <div class="spec"><span class="spec-key">THRUST</span><span class="spec-val">180 N avg</span></div>
+              </div>
+              <a href="#" class="btn-outline btn-small">LEARN MORE</a>
+            </div>
+          </div>
+
+          <div class="project-card" data-reveal>
+            <div class="project-bg">
+              <img src="satellite_orbit_1773673165782.png" alt="Dhruvasthra">
+            </div>
+            <div class="project-content">
+              <div class="project-header">
+                <div class="project-name">DHRUVASTHRA</div>
+                <div class="project-status status-dev">IN DEVELOPMENT</div>
+              </div>
+              <p class="project-desc">High-power experimental rocket competing at SPAC 2025. Two-stage design with GPS
+                telemetry, active roll control, and deployable dual-parachute recovery system.</p>
+              <div class="project-specs">
+                <div class="spec"><span class="spec-key">TARGET APOGEE</span><span class="spec-val">3,000 m</span></div>
+                <div class="spec"><span class="spec-key">STAGES</span><span class="spec-val">2</span></div>
+                <div class="spec"><span class="spec-key">RECOVERY</span><span class="spec-val">Dual Chute</span></div>
+                <div class="spec"><span class="spec-key">TELEMETRY</span><span class="spec-val">GPS + IMU</span></div>
+              </div>
+              <a href="#" class="btn-outline btn-small">LEARN MORE</a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════ TEAM ═══════════════════ -->
+    <section id="team" class="section-pad">
+      <div class="section-inner">
+        <div class="section-label">03 / Our Team</div>
+        <h2 class="section-title">The Crew<br>Behind the Mission</h2>
+        <div class="team-grid">
+
+          <div class="team-card" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">A</div>
+            </div>
+            <div class="team-name">Prem Choudhary</div>
+            <div class="team-role">Team Lead</div>
+            <div class="team-dept">Automation & Robotics. · Third Year</div>
+          </div>
+
+          <div class="team-card delay-1" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">P</div>
+            </div>
+            <div class="team-name">Jay Gnandhi</div>
+            <div class="team-role">Chief Engineer</div>
+            <div class="team-dept">Automation & Robotics. · Third Year</div>
+          </div>
+
+          <div class="team-card delay-2" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">R</div>
+            </div>
+            <div class="team-name">Harshal Gadekar</div>
+            <div class="team-role">Propulsion Lead</div>
+            <div class="team-dept">Automation & Robotics. · Third Year</div>
+          </div>
+
+          <div class="team-card delay-3" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">N</div>
+            </div>
+            <div class="team-name">Shubham Sattigeri</div>
+            <div class="team-role">Avionics Lead</div>
+            <div class="team-dept">Information Technology.  Second Year</div>
+          </div>
+
+          <div class="team-card delay-4" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">S</div>
+            </div>
+            <div class="team-name">Pranav Suryavanshi</div>
+            <div class="team-role">Structures Lead</div>
+            <div class="team-dept">Automation & Robotics. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-5" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">K</div>
+            </div>
+            <div class="team-name">Sahil Nemade</div>
+            <div class="team-role">Software Lead</div>
+            <div class="team-dept">Automation & Robotics. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-6" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">V</div>
+            </div>
+            <div class="team-name">Jeevan Patole</div>
+            <div class="team-role">Safety Officer</div>
+            <div class="team-dept">Automation & Robotics. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-7" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">M</div>
+            </div>
+            <div class="team-name">Chetan Shirsath</div>
+            <div class="team-role">Outreach Lead</div>
+            <div class="team-dept">Automation & Robotics. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-6" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">V</div>
+            </div>
+            <div class="team-name">Atharva Jagdale</div>
+            <div class="team-role">Safety Officer</div>
+            <div class="team-dept">Automation & Robotics. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-6" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">V</div>
+            </div>
+            <div class="team-name">Charul Choudhary</div>
+            <div class="team-role">Safety Officer</div>
+            <div class="team-dept">Mechanical Engineering. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-6" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">V</div>
+            </div>
+            <div class="team-name">Rushikesh Bobade</div>
+            <div class="team-role">Safety Officer</div>
+            <div class="team-dept">Mechanical Engineering. · Second Year.</div>
+          </div>
+
+          <div class="team-card delay-6" data-reveal>
+            <div class="team-avatar">
+              <div class="team-avatar-inner">V</div>
+            </div>
+            <div class="team-name">Pushkar Kulkarni</div>
+            <div class="team-role">Safety Officer</div>
+            <div class="team-dept">Mechanical Engineering. · Second Year.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════ GALLERY ═══════════════════ -->
+    <section id="gallery" class="section-pad">
+      <div class="section-inner">
+        <div class="section-label">04 / Gallery &amp; Media</div>
+        <h2 class="section-title">In the Field</h2>
+        <div class="gallery-grid">
+
+        <div class="gallery-item" data-reveal>
+          <div class="gallery-bg">
+          <img src="Gemini_Generated_Image.png" alt="Falcon Heavy Test Flight" width="500" height="400" />
+          </div>
+          <div class="gallery-overlay">
+          <div class="gallery-label">Falcon Heavy Test Flight</div>
+        </div>
+      </div>
+
+          <div class="gallery-item delay-1" data-reveal>
+            <div class="gallery-bg">
+              <iframe class="gallery-video" src="https://www.youtube.com/embed/OnoNITE-clc?rel=0" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-label">Starship Flight Test</div>
+            </div>
+          </div>
+
+          <div class="gallery-item delay-2" data-reveal>
+            <div class="gallery-bg g3">
+              <div class="gallery-glyph"><span class="gallery-icon">🔬</span></div>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-label">Propulsion Lab · RSCOE</div>
+            </div>
+          </div>
+
+          <div class="gallery-item delay-1" data-reveal>
+            <div class="gallery-bg g4">
+              <div class="gallery-glyph"><span class="gallery-icon">⚙️</span></div>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-label">Structural Fabrication Workshop</div>
+            </div>
+          </div>
+
+          <div class="gallery-item delay-2" data-reveal>
+            <div class="gallery-bg g5">
+              <div class="gallery-glyph"><span class="gallery-icon">📡</span></div>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-label">Ground Station · Telemetry Test</div>
+            </div>
+          </div>
+
+          <div class="gallery-item delay-3" data-reveal>
+            <div class="gallery-bg g6">
+              <div class="gallery-glyph"><span class="gallery-icon">🌌</span></div>
+            </div>
+            <div class="gallery-overlay">
+              <div class="gallery-label">Competition · SPAC 2024</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <div class="divider"></div>
+
+    <!-- ═══════════════════ CONTACT ═══════════════════ -->
+    <section id="contact" class="section-pad">
+      <div class="section-inner">
+        <div class="section-label">05 / Contact &amp; Join Us</div>
+        <div class="contact-grid">
+
+          <div class="contact-info" data-reveal>
+            <h2 class="contact-info-title">Ready to<br><span>Launch Your</span><br>Career?</h2>
+            <p class="contact-info-sub">Team Dhruvishaya recruits passionate engineers every semester. We don't ask for
+              experience — we build it. If you're willing to get your hands dirty and your mind into orbit, we want you.
+            </p>
+            <div class="contact-items">
+              <div class="contact-item">
+                <div class="contact-icon">✉</div>
+                <span>hr@teamdhruvishaya.in</span>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">📍</div>
+                <span>RSCOE Campus, Tathawade, Pune — 411033</span>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">🔗</div>
+                <span>@TeamDhruvishaya</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form" data-reveal>
+            <div class="form-title">⟡ Apply to the Team</div>
+            <div class="form-grid">
+              <div class="form-group">
+                <label class="form-label">Full Name</label>
+                <input class="form-input" type="text" placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Year</label>
+                <select class="form-select">
+                  <option value="">Select Year</option>
+                  <option>First Year</option>
+                  <option>Second Year</option>
+                  <option>Third Year</option>
+                  <option>Final Year</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label class="form-label">Branch</label>
+                <input class="form-input" type="text" placeholder="e.g. Mechanical">
+              </div>
+              <div class="form-group">
+                <label class="form-label">Domain Interest</label>
+                <select class="form-select">
+                  <option value="">Select Domain</option>
+                  <option>Propulsion</option>
+                  <option>Structures</option>
+                  <option>Avionics</option>
+                  <option>Software</option>
+                  <option>Outreach & Design</option>
+                  <option>Safety</option>
+                </select>
+              </div>
+              <div class="form-group full">
+                <label class="form-label">Why Dhruvishaya?</label>
+                <textarea class="form-textarea" placeholder="Tell us what drives you toward aerospace..."></textarea>
+              </div>
+            </div>
+            <button class="btn-primary" style="width:100%;justify-content:center;text-align:center;display:block;"
+              onclick="handleSubmit(event)">Launch Application ✦</button>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">✦ DHRUVISHAYA</div>
+    <div class="footer-links">
+      <a href="#projects">Projects</a>
+      <a href="#team">Team</a>
+      <a href="#gallery">Gallery</a>
+      <a href="#contact">Join</a>
+    </div>
+    <div class="footer-copy">© 2026 Team Dhruvishaya · RSCOE · Pune</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>
