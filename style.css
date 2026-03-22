@@ -20,8 +20,9 @@
   --glass-highlight: transparent;
   
   /* Typography */
-  --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  --font-heading: 'Outfit', sans-serif;
+  --font-stardock: 'Stardock', 'TERBAANG', 'Outfit', 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --font-body: var(--font-stardock);
+  --font-heading: var(--font-stardock);
   --font-mono: 'Space Mono', monospace;
   
   /* Stark Shadows */
@@ -42,6 +43,10 @@ body {
   overflow-x: hidden;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-heading);
 }
 
 ::selection {
@@ -248,6 +253,86 @@ button, input, select, textarea {
   z-index: -1;
 }
 
+footer {
+  padding: 3rem 4rem;
+  text-align: center;
+  color: var(--text-muted);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(0, 0, 0, 0.42);
+  font-family: var(--font-stardock);
+}
+
+footer .footer-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+footer .footer-logo {
+  font-weight: 800;
+  letter-spacing: 0.15em;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+footer .footer-links {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+}
+
+footer .footer-links a,
+footer .footer-social a,
+footer .footer-social span {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+  font-weight: 400;
+  letter-spacing: 0.08em;
+  transition: color 0.2s ease, opacity 0.2s ease;
+}
+
+footer .footer-links a:hover,
+footer .footer-social a:hover {
+  color: var(--text-main);
+  opacity: 0.95;
+}
+
+footer .footer-social {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+footer .footer-copy {
+  font-family: var(--font-mono);
+  font-size: 0.73rem;
+  color: var(--text-muted);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+  footer {
+    padding: 2rem 1.5rem;
+  }
+  footer .footer-top {
+    flex-direction: column;
+    align-items: center;
+  }
+  footer .footer-links {
+    gap: 0.75rem;
+  }
+  footer .footer-social {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+}
 .g-top-right { top: 5%; right: 10%; }
 .g-bottom-right { bottom: 10%; right: 5%; }
 .g-mid-left { top: 40%; left: 5%; }
@@ -270,10 +355,10 @@ button, input, select, textarea {
   display: flex;
   flex-direction: column;
   justify-content: flex-end; /* Align bottom */
-  align-items: center; /* Center horizontally */
+  align-items: flex-start; /* Left align horizontally */
   padding: 8rem 4rem 6rem 4rem; /* Bottom padding for the text */
   position: relative;
-  text-align: center; /* Center align text */
+  text-align: left; /* Left align text */
 }
 
 .hero-content {
@@ -284,7 +369,11 @@ button, input, select, textarea {
   z-index: 2;
   display: flex;
   flex-direction: column;
-  align-items: center; /* Center align items */
+  align-items: flex-start; /* Left align items */
+}
+
+.hero-title {
+  text-align: left; /* Ensure heading aligns left */
 }
 
 .hero-bg {
