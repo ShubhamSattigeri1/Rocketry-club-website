@@ -61,39 +61,80 @@ window.addEventListener('scroll', () => {
 
 // ═══════════════════ FORM SUBMISSION ═══════════════════
 
-function handleSubmit(e) {
-  e.preventDefault();
-  const btn = e.target;
-  const originalText = btn.innerHTML;
-  
-  btn.innerHTML = 'System Launching...';
-  btn.style.opacity = '0.7';
-  
-  setTimeout(() => {
-    btn.innerHTML = 'Application Received ✓';
-    btn.style.opacity = '1';
-    btn.style.background = '#4CAF50';
-    btn.style.borderColor = '#4CAF50';
-    btn.style.color = '#fff';
-    
-    setTimeout(() => {
-      btn.innerHTML = originalText;
-      btn.style.background = '';
-      btn.style.borderColor = '';
-      btn.style.color = '';
-      e.target.closest('form')?.reset();
-    }, 3000);
-  }, 1500);
-}
+async function handleSubmit(event) {
+  event.preventDefault();
 
-window.handleSubmit = handleSubmit;
+  const form = event.currentTarget;
+  const button = form?.querySelector('button[type="submit"]');
+  if (!form || !button) return;
+
+  const originalText = button.innerHTML;
+  const formData = new FormData(form);
+  const payload = {
+    fullName: formData.get('fullName')?.toString().trim() || '',
+    year: formData.get('year')?.toString().trim() || '',
+    branch: formData.get('branch')?.toString().trim() || '',
+    domainInterest: formData.get('domainInterest')?.toString().trim() || '',
+    motivation: formData.get('motivation')?.toString().trim() || ''
+  };
+
+  button.innerHTML = 'System Launching...';
+  button.style.opacity = '0.7';
+  button.disabled = true;
+
+  try {
+    const response = await fetch('/submit-application', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(payload)
+    });
+
+    if (!response.ok) {
+      throw new Error('Submission failed');
+    }
+
+    button.innerHTML = 'Application Received ✓';
+    button.style.opacity = '1';
+    button.style.background = '#4CAF50';
+    button.style.borderColor = '#4CAF50';
+    button.style.color = '#fff';
+
+    setTimeout(() => {
+      button.innerHTML = originalText;
+      button.style.background = '';
+      button.style.borderColor = '';
+      button.style.color = '';
+      button.disabled = false;
+      form.reset();
+    }, 3000);
+  } catch (error) {
+    button.innerHTML = 'Submission Failed';
+    button.style.opacity = '1';
+    button.style.background = '#B42318';
+    button.style.borderColor = '#B42318';
+    button.style.color = '#fff';
+
+    setTimeout(() => {
+      button.innerHTML = originalText;
+      button.style.background = '';
+      button.style.borderColor = '';
+      button.style.color = '';
+      button.disabled = false;
+    }, 3000);
+  }
+}
 
 // ═══════════════════ FORCE AUTOPLAY (fallback for strict browsers) ═══════════════════
 // Some browsers block autoplay without a user gesture even when muted.
 // This tries to start playback once DOM is ready and adds a small play overlay if blocked.
 
 window.addEventListener('DOMContentLoaded', () => {
-  const video = document.querySelector<HTMLVideoElement>('.bg-video');
+  const form = document.getElementById('application-form');
+  form?.addEventListener('submit', handleSubmit);
+
+  const video = document.querySelector('.bg-video');
   if (!video) return;
 
   const tryPlay = () => {

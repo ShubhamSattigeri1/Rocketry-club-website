@@ -506,16 +506,16 @@ Our flagship learning vehicle—designed, built, and launched by the core team. 
             </div>
           </div>
 
-          <div class="contact-form" data-reveal>
+          <form class="contact-form" id="application-form" data-reveal>
             <div class="form-title">⟡ Apply to the Team</div>
             <div class="form-grid">
               <div class="form-group">
                 <label class="form-label">Full Name</label>
-                <input class="form-input" type="text" placeholder="Your name">
+                <input class="form-input" type="text" name="fullName" placeholder="Your name" required>
               </div>
               <div class="form-group">
                 <label class="form-label">Year</label>
-                <select class="form-select">
+                <select class="form-select" name="year" required>
                   <option value="">Select Year</option>
                   <option>First Year</option>
                   <option>Second Year</option>
@@ -525,11 +525,11 @@ Our flagship learning vehicle—designed, built, and launched by the core team. 
               </div>
               <div class="form-group">
                 <label class="form-label">Branch</label>
-                <input class="form-input" type="text" placeholder="e.g. Mechanical">
+                <input class="form-input" type="text" name="branch" placeholder="e.g. Mechanical" required>
               </div>
               <div class="form-group">
                 <label class="form-label">Domain Interest</label>
-                <select class="form-select">
+                <select class="form-select" name="domainInterest" required>
                   <option value="">Select Domain</option>
                   <option>Propulsion</option>
                   <option>Structures</option>
@@ -541,12 +541,13 @@ Our flagship learning vehicle—designed, built, and launched by the core team. 
               </div>
               <div class="form-group full">
                 <label class="form-label">Why Dhruvishaya?</label>
-                <textarea class="form-textarea" placeholder="Tell us what drives you toward aerospace..."></textarea>
+                <textarea class="form-textarea" name="motivation" placeholder="Tell us what drives you toward aerospace..." required></textarea>
               </div>
             </div>
-            <button class="btn-primary" style="width:100%;justify-content:center;text-align:center;display:block;"
-              onclick="handleSubmit(event)">Launch Application ✦</button>
-          </div>
+            <button class="btn-primary" type="submit" style="width:100%;justify-content:center;text-align:center;display:block;">
+              Launch Application ✦
+            </button>
+          </form>
 
         </div>
       </div>
