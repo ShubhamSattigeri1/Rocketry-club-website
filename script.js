@@ -61,6 +61,27 @@ window.addEventListener('scroll', () => {
 
 // ═══════════════════ FORM SUBMISSION ═══════════════════
 
+const supabaseUrl = 'https://guxisdxehavxywetzkwz.supabase.co';
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imd1eGlzZHhlaGF2eHl3ZXR6a3d6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzQ0NDUzMzUsImV4cCI6MjA5MDAyMTMzNX0.mNLJYTqDLRzn_b8uiQMIk4gTvneZcRi8XAHeZyxZodA';
+const supabaseClient = window.supabase?.createClient(supabaseUrl, supabaseAnonKey);
+
+function setFormStatus(form, message, color) {
+  if (!form) return;
+
+  let statusEl = form.querySelector('[data-form-status]');
+  if (!statusEl) {
+    statusEl = document.createElement('div');
+    statusEl.setAttribute('data-form-status', 'true');
+    statusEl.setAttribute('aria-live', 'polite');
+    statusEl.style.marginTop = '16px';
+    statusEl.style.fontSize = '0.95rem';
+    form.appendChild(statusEl);
+  }
+
+  statusEl.textContent = message;
+  statusEl.style.color = color;
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
 
@@ -71,35 +92,36 @@ async function handleSubmit(event) {
   const originalText = button.innerHTML;
   const formData = new FormData(form);
   const payload = {
-    fullName: formData.get('fullName')?.toString().trim() || '',
-    year: formData.get('year')?.toString().trim() || '',
+    full_name: formData.get('fullName')?.toString().trim() || '',
+    select_year: formData.get('year')?.toString().trim() || '',
     branch: formData.get('branch')?.toString().trim() || '',
-    domainInterest: formData.get('domainInterest')?.toString().trim() || '',
-    motivation: formData.get('motivation')?.toString().trim() || ''
+    domain_interest: formData.get('domainInterest')?.toString().trim() || '',
+    why_dhruvishaya: formData.get('motivation')?.toString().trim() || ''
   };
+
+  if (!supabaseClient) {
+    setFormStatus(form, 'Unable to connect right now. Please try again.', '#B42318');
+    return;
+  }
 
   button.innerHTML = 'System Launching...';
   button.style.opacity = '0.7';
   button.disabled = true;
+  setFormStatus(form, '', '');
 
   try {
-    const response = await fetch('/submit-application', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(payload)
-    });
+    const { error } = await supabaseClient
+      .from('registrations')
+      .insert([payload]);
 
-    if (!response.ok) {
-      throw new Error('Submission failed');
-    }
+    if (error) throw error;
 
     button.innerHTML = 'Application Received ✓';
     button.style.opacity = '1';
     button.style.background = '#4CAF50';
     button.style.borderColor = '#4CAF50';
     button.style.color = '#fff';
+    setFormStatus(form, 'Application submitted successfully.', '#4CAF50');
 
     setTimeout(() => {
       button.innerHTML = originalText;
@@ -115,6 +137,7 @@ async function handleSubmit(event) {
     button.style.background = '#B42318';
     button.style.borderColor = '#B42318';
     button.style.color = '#fff';
+    setFormStatus(form, error.message || 'Something went wrong. Please try again.', '#B42318');
 
     setTimeout(() => {
       button.innerHTML = originalText;
