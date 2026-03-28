@@ -5,7 +5,9 @@ const path = require('path');
 const PORT = process.env.PORT || 3000;
 const HOST = process.env.HOST || '127.0.0.1';
 const ROOT_DIR = __dirname;
-const CSV_PATH = path.join(ROOT_DIR, 'submissions.csv');
+const PUBLIC_DIR = path.join(ROOT_DIR, 'public');
+const DATA_DIR = path.join(ROOT_DIR, 'data');
+const CSV_PATH = path.join(DATA_DIR, 'submissions.csv');
 
 const MIME_TYPES = {
   '.css': 'text/css; charset=utf-8',
@@ -24,6 +26,10 @@ const MIME_TYPES = {
 const CSV_HEADER = 'submitted_at,full_name,year,branch,domain_interest,motivation\n';
 
 function ensureCsvFile() {
+  if (!fs.existsSync(DATA_DIR)) {
+    fs.mkdirSync(DATA_DIR, { recursive: true });
+  }
+
   if (!fs.existsSync(CSV_PATH)) {
     fs.writeFileSync(CSV_PATH, CSV_HEADER, 'utf8');
   }
@@ -55,11 +61,12 @@ function sendJson(res, statusCode, body) {
 }
 
 function serveStaticFile(req, res) {
-  const requestPath = req.url === '/' ? '/index.html' : req.url;
+  const requestUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
+  const requestPath = requestUrl.pathname === '/' ? '/index.html' : requestUrl.pathname;
   const safePath = path.normalize(decodeURIComponent(requestPath)).replace(/^(\.\.[/\\])+/, '');
-  const filePath = path.join(ROOT_DIR, safePath);
+  const filePath = path.join(PUBLIC_DIR, safePath);
 
-  if (!filePath.startsWith(ROOT_DIR)) {
+  if (!filePath.startsWith(PUBLIC_DIR)) {
     res.writeHead(403);
     res.end('Forbidden');
     return;
