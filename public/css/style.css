@@ -407,8 +407,8 @@ footer .footer-copy {
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(-100px);
+  animation: fallDown 1.5s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
   position: relative;
@@ -453,8 +453,8 @@ footer .footer-copy {
   color: var(--text-muted);
   max-width: 600px;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(-100px);
+  animation: fallDown 1.5s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   margin-bottom: 2rem;
 }
 
@@ -466,8 +466,8 @@ footer .footer-copy {
   border-left: 2px solid rgba(255, 255, 255, 0.2);
   padding-left: 1.5rem;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(-100px);
+  animation: fallDown 1.5s 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .spec-item {
@@ -496,8 +496,8 @@ footer .footer-copy {
   gap: 4rem;
   margin-bottom: 4rem;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(-100px);
+  animation: fallDown 1.5s 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .stat {
@@ -539,8 +539,8 @@ footer .footer-copy {
   align-items: center;
   margin-top: 2rem;
   opacity: 0;
-  transform: translateY(20px);
-  animation: fadeUp 1s 1s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  transform: translateY(-100px);
+  animation: fallDown 1.5s 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .bg-scroll-hint {
@@ -1306,6 +1306,11 @@ footer {
 
 @keyframes fadeUp {
   from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fallDown {
+  from { opacity: 0; transform: translateY(-100px); }
   to { opacity: 1; transform: translateY(0); }
 }
 

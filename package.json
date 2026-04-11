@@ -1,0 +1,16 @@
+{
+  "name": "rocketry-club-website",
+  "version": "1.0.0",
+  "description": "Team Dhruvishaya - RSCOE Aerospace Rocketry Club Website",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "keywords": ["rocketry", "aerospace", "club", "website"],
+  "author": "Team Dhruvishaya",
+  "license": "MIT"
+}
