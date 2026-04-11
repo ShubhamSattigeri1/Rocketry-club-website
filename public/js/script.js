@@ -182,51 +182,89 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 // ═══════════════════ CHAOTIC FREE-FALL ANIMATION ═══════════════════
-// Makes all text elements fall chaotically as if gravity suddenly turned on
+// Makes ALL text elements fall chaotically as if gravity suddenly turned on
 
 window.addEventListener('DOMContentLoaded', () => {
-  // Wait a bit before starting the chaos
+  // Wait a bit before starting the total destruction
   setTimeout(() => {
-    applyChaoticFreeFall();
+    applyTotalDestruction();
   }, 1000);
 });
 
-function applyChaoticFreeFall() {
-  // Select all text-containing elements
-  const textSelectors = 'h1, h2, h3, h4, h5, h6, p, span, label, button, a, div, li, td, th, caption, figcaption, blockquote, q, cite, em, strong, b, i, small, mark, del, ins, sub, sup, code, pre, kbd, samp, var, time, address, abbr, dfn, s';
+function applyTotalDestruction() {
+  // Get ALL elements on the page
+  const allElements = document.querySelectorAll('*');
 
-  const textElements = document.querySelectorAll(textSelectors);
+  // Create a style element to hold all the dynamic keyframes
+  const styleElement = document.createElement('style');
+  document.head.appendChild(styleElement);
+  const styleSheet = styleElement.sheet;
 
-  textElements.forEach((element, index) => {
-    // Skip elements that are already animated, hidden, or don't contain text
+  // Filter elements that have direct visible text content
+  const textElements = Array.from(allElements).filter(element => {
+    // Skip elements that are already animated or are special UI elements
     if (element.classList.contains('no-fall') ||
         element.closest('.custom-cursor') ||
         element.closest('.video-play-hint') ||
-        element.closest('.hero-title, .hero-tagline, .hero-specs, .hero-stats, .hero-cta-wrapper') ||
-        !element.textContent.trim() ||
+        element.id === 'custom-cursor' ||
+        element.tagName === 'SCRIPT' ||
+        element.tagName === 'STYLE' ||
+        element.tagName === 'LINK' ||
+        element.tagName === 'META' ||
+        element.tagName === 'TITLE' ||
         window.getComputedStyle(element).display === 'none' ||
         window.getComputedStyle(element).visibility === 'hidden') {
-      return;
+      return false;
     }
 
-    // Skip elements that are too small or are part of UI controls
-    const rect = element.getBoundingClientRect();
-    if (rect.width < 10 || rect.height < 10) {
-      return;
+    // Check if element has direct text nodes (not just child elements)
+    const hasDirectText = Array.from(element.childNodes).some(node =>
+      node.nodeType === Node.TEXT_NODE &&
+      node.textContent.trim().length > 0
+    );
+
+    // Also include specific text-containing elements even if they don't have direct text
+    const textElementTags = ['H1', 'H2', 'H3', 'H4', 'H5', 'H6', 'P', 'SPAN', 'A', 'BUTTON', 'LABEL', 'LI', 'TD', 'TH', 'CAPTION', 'LEGEND', 'FIGCAPTION', 'BLOCKQUOTE', 'CITE', 'DT', 'DD', 'SMALL', 'STRONG', 'EM', 'B', 'I', 'NAV', 'HEADER', 'FOOTER'];
+
+    return hasDirectText || textElementTags.includes(element.tagName);
+  });
+
+  console.log(`Applying destruction to ${textElements.length} text elements`);
+
+  textElements.forEach((element, index) => {
+    // Generate unique animation name
+    const animationName = `destructionFall_${index}`;
+
+    // Generate random values
+    const randomDelay = Math.random() * 2500; // 0-2500ms
+    const randomDuration = 600 + Math.random() * 1200; // 600-1800ms
+    const randomRotation = (Math.random() - 0.5) * 120; // -60deg to 60deg
+
+    // Create unique keyframes for this element
+    const keyframes = `
+      @keyframes ${animationName} {
+        0% {
+          transform: translateY(0) rotate(0deg);
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(120vh) rotate(${randomRotation}deg);
+          opacity: 0;
+        }
+      }
+    `;
+
+    // Add keyframes to stylesheet
+    styleSheet.insertRule(keyframes, styleSheet.cssRules.length);
+
+    // Override position if needed
+    const computedStyle = window.getComputedStyle(element);
+    if (computedStyle.position === 'static') {
+      element.style.position = 'relative';
     }
 
-    // Generate random values for chaotic effect
-    const randomDelay = Math.random() * 2; // 0-2 seconds
-    const randomDuration = 2 + Math.random() * 3; // 2-5 seconds
-    const randomRotation = (Math.random() - 0.5) * 90; // -45deg to 45deg
-    const randomXMovement = (Math.random() - 0.5) * 200; // -100px to 100px horizontal drift
-
-    // Apply the falling animation
-    element.style.animation = `chaoticFall ${randomDuration}s ease-in ${randomDelay}s forwards`;
+    // Apply the animation
+    element.style.animation = `${animationName} ${randomDuration}ms cubic-bezier(0.25, 0.1, 0.3, 1.4) ${randomDelay}ms forwards`;
     element.style.transformOrigin = 'center center';
-
-    // Add CSS custom properties for the animation
-    element.style.setProperty('--fall-rotation', `${randomRotation}deg`);
-    element.style.setProperty('--fall-x', `${randomXMovement}px`);
   });
 }
