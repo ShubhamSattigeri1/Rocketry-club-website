@@ -1321,6 +1321,21 @@ footer {
   }
 }
 
+@keyframes chaoticFall {
+  0% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) rotate(0deg) scale(1);
+  }
+  50% {
+    opacity: 0.8;
+    transform: translateX(var(--fall-x, 0)) translateY(50vh) rotate(var(--fall-rotation, 0deg)) scale(0.9);
+  }
+  100% {
+    opacity: 0.3;
+    transform: translateX(calc(var(--fall-x, 0) * 1.5)) translateY(120vh) rotate(calc(var(--fall-rotation, 0deg) * 1.2)) scale(0.7);
+  }
+}
+
 @keyframes fadeIn {
   from { opacity: 0; }
   to { opacity: 1; }

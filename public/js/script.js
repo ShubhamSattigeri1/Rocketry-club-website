@@ -180,3 +180,53 @@ window.addEventListener('DOMContentLoaded', () => {
 
   tryPlay();
 });
+
+// ═══════════════════ CHAOTIC FREE-FALL ANIMATION ═══════════════════
+// Makes all text elements fall chaotically as if gravity suddenly turned on
+
+window.addEventListener('DOMContentLoaded', () => {
+  // Wait a bit before starting the chaos
+  setTimeout(() => {
+    applyChaoticFreeFall();
+  }, 1000);
+});
+
+function applyChaoticFreeFall() {
+  // Select all text-containing elements
+  const textSelectors = 'h1, h2, h3, h4, h5, h6, p, span, label, button, a, div, li, td, th, caption, figcaption, blockquote, q, cite, em, strong, b, i, small, mark, del, ins, sub, sup, code, pre, kbd, samp, var, time, address, abbr, dfn, s';
+
+  const textElements = document.querySelectorAll(textSelectors);
+
+  textElements.forEach((element, index) => {
+    // Skip elements that are already animated, hidden, or don't contain text
+    if (element.classList.contains('no-fall') ||
+        element.closest('.custom-cursor') ||
+        element.closest('.video-play-hint') ||
+        element.closest('.hero-title, .hero-tagline, .hero-specs, .hero-stats, .hero-cta-wrapper') ||
+        !element.textContent.trim() ||
+        window.getComputedStyle(element).display === 'none' ||
+        window.getComputedStyle(element).visibility === 'hidden') {
+      return;
+    }
+
+    // Skip elements that are too small or are part of UI controls
+    const rect = element.getBoundingClientRect();
+    if (rect.width < 10 || rect.height < 10) {
+      return;
+    }
+
+    // Generate random values for chaotic effect
+    const randomDelay = Math.random() * 2; // 0-2 seconds
+    const randomDuration = 2 + Math.random() * 3; // 2-5 seconds
+    const randomRotation = (Math.random() - 0.5) * 90; // -45deg to 45deg
+    const randomXMovement = (Math.random() - 0.5) * 200; // -100px to 100px horizontal drift
+
+    // Apply the falling animation
+    element.style.animation = `chaoticFall ${randomDuration}s ease-in ${randomDelay}s forwards`;
+    element.style.transformOrigin = 'center center';
+
+    // Add CSS custom properties for the animation
+    element.style.setProperty('--fall-rotation', `${randomRotation}deg`);
+    element.style.setProperty('--fall-x', `${randomXMovement}px`);
+  });
+}
