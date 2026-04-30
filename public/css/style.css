@@ -406,9 +406,6 @@ footer .footer-copy {
   font-weight: 800;
   letter-spacing: 0.05em;
   margin-bottom: 1.5rem;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  animation: freeFall 3s 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   color: #ffffff;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
   position: relative;
@@ -438,8 +435,7 @@ footer .footer-copy {
   width: 250px;
   height: 250px;
   pointer-events: none;
-  opacity: 0;
-  animation: rocketFly 4s ease-out forwards 1s;
+  opacity: 1;
 }
 
 @keyframes rocketFly {
@@ -452,9 +448,6 @@ footer .footer-copy {
   font-weight: 400;
   color: var(--text-muted);
   max-width: 600px;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  animation: freeFall 3s 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
   margin-bottom: 2rem;
 }
 
@@ -465,9 +458,6 @@ footer .footer-copy {
   margin-bottom: 3.5rem;
   border-left: 2px solid rgba(255, 255, 255, 0.2);
   padding-left: 1.5rem;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  animation: freeFall 3s 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 }
 
@@ -496,9 +486,6 @@ footer .footer-copy {
   display: flex;
   gap: 4rem;
   margin-bottom: 4rem;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  animation: freeFall 3s 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .stat {
@@ -539,9 +526,6 @@ footer .footer-copy {
   display: flex;
   align-items: center;
   margin-top: 2rem;
-  opacity: 1;
-  transform: translateY(0) scale(1);
-  animation: freeFall 3s 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .bg-scroll-hint {
