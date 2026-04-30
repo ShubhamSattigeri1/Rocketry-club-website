@@ -183,8 +183,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
 // ═══════════════════ CHAOTIC FREE-FALL ANIMATION ═══════════════════
 // Makes ALL text elements fall chaotically as if gravity suddenly turned on
+// DISABLED: Removed gravity animation as requested
 
-window.addEventListener('DOMContentLoaded', () => {
+/* window.addEventListener('DOMContentLoaded', () => {
   // Wait a bit before starting the total destruction
   setTimeout(() => {
     applyTotalDestruction();
@@ -268,3 +269,4 @@ function applyTotalDestruction() {
     element.style.transformOrigin = 'center center';
   });
 }
+*/
